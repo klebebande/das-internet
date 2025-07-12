@@ -76,8 +76,8 @@
             flex-direction: column;
             justify-content: flex-start;
             /* pushes footer to bottom */
-            background: url("src/img/blownupguy.png") top center no-repeat;
-            background-size: cover;
+            /* background: url("src/img/blownupguy.png") top center no-repeat; */
+            /* background-size: cover; */
             border: 3px solid #fff;
             border-bottom-color: #888;
             border-right-color: #888;
@@ -280,6 +280,14 @@
         }
 
         randomTremble();
+
+
+        const faceImages = ['face0.png', 'face1.png', 'face2.png', 'face3.png'];
+        const randomFace = faceImages[Math.floor(Math.random() * faceImages.length)];
+        const container = document.querySelector('.container');
+        container.style.backgroundImage = `url('src/img/facesOfTheInternet/${randomFace}')`;
+        container.style.backgroundSize = 'cover';
+        container.style.backgroundPosition = 'top center';
     </script>
 </body>
 
