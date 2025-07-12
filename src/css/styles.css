@@ -30,6 +30,11 @@
     --cursor-hover: url("../img/cursed_cursor_state-2.svg") 64 5, auto;
 }
 
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 body {
     /* height: 100vh; */
     margin: 0;
