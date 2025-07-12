@@ -1,11 +1,10 @@
-<!-- website.html -->
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Das Internet - Official Band Website</title>
+    <title>Das Internet - Tour Dates</title>
     <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/tour.css">
 </head>
 
 <body>
@@ -27,30 +26,49 @@
                     <span style="color: rgb(255, 255, 0);">t</span>
                 </h1>
                 <nav>
-                    <a href="#">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="#">Music</a>
                     <a href="#">Art</a>
                     <a href="tour.html">Tour</a>
                 </nav>
 
-                <h2>Welcome to the Official Website!</h2>
-                <div class="main-content">
-                    <h2 id="latest-news">
-                        <a id="contact-link" href="contact.html">Click here to contact us!</a>
-                    </h2>
+                <h2>2025 World Tour</h2>
 
+                <div class="spray-layout">
+                    <img id="spray-bottle" src="src/img/spray-bottle.png" class="spray-bottle" alt="Spray Bottle">
+                    <div id="triangle-frame" class="triangle-frame hidden">
+                        <ul class="tour-list">
+                            <li>April 10, 2025 @ Falckensteinstraße, Berlin</li>
+                            <li>April 13, 2025 @ La Gare, Paris</li>
+                        </ul>
+                    </div>
                 </div>
 
+                <p><a id="contact-link" href="contact.html">Want us in your city? Contact us!</a></p>
             </div>
+
             <footer>
                 &copy; 2025 Das Internet. All rights reserved.
             </footer>
         </div>
     </div>
+
     <div class="scroll-section"></div>
     <div id="spin-cursor"></div>
 
     <script src="src/js/main.js" defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const spray = document.getElementById("spray-bottle");
+            const triangle = document.getElementById("triangle-frame");
+
+            spray.addEventListener("click", () => {
+                triangle.classList.toggle("hidden");
+                spray.classList.toggle("sprayed"); // ⬅️ disable hover effect
+            });
+        });
+    </script>
 </body>
 
 </html>

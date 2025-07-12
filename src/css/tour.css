@@ -1,0 +1,85 @@
+.hidden {
+    display: none !important;
+}
+
+.spray-layout {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 600px;
+    margin: 0 0;
+}
+
+.spray-bottle {
+    height: 400px;
+    z-index: 2;
+    transition: transform 0.2s ease;
+    cursor: var(--cursor-hover, pointer);
+}
+
+/* Only apply hover effect if not clicked */
+.spray-bottle:hover:not(.sprayed) {
+    transform: rotate(-8deg) translateY(-10px);
+    cursor: var(--cursor-hover, pointer);
+}
+
+/* Triangle beam starting at nozzle tip */
+.triangle-frame {
+    position: absolute;
+    top: 140px;
+    left: calc(50% + 80px);
+    transform: translateY(-50%);
+    width: 500px;
+    padding: 100px 20px;
+    background: white;
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.tour-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.tour-list li {
+    margin: 6px 0;
+    padding: 0;
+    color: green;
+    text-align: right;
+    font-size: 1.1em;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Expanding widths to match triangle shape */
+.tour-list li:nth-child(1) {
+    width: 45%;
+}
+
+.tour-list li:nth-child(2) {
+    width: 60%;
+}
+
+.tour-list li:nth-child(3) {
+    width: 75%;
+}
+
+.tour-list li:nth-child(4) {
+    width: 90%;
+}
+
+.tour-list li:nth-child(5) {
+    width: 100%;
+}
