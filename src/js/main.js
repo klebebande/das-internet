@@ -163,3 +163,16 @@ document.addEventListener('mousedown', () => {
 document.addEventListener('mouseup', () => {
     document.documentElement.style.setProperty('--cursor-hover', 'url("../img/cursed_cursor_state-2.svg") 64 5, auto');
 });
+
+
+document.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    const indicator = document.getElementById("touch-indicator");
+    indicator.style.left = `${touch.clientX}px`;
+    indicator.style.top = `${touch.clientY}px`;
+    indicator.style.display = "block";
+
+    setTimeout(() => {
+        indicator.style.display = "none";
+    }, 500); // auto-hide after 0.5s
+});
