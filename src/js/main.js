@@ -36,8 +36,8 @@ function trembleBurst(letter) {
     const maxShakes = 3 + Math.floor(Math.random() * 6);
 
     function singleShake() {
-        const x = (Math.random() - 0.5) * 6;
-        const y = (Math.random() - 0.5) * 6;
+        const x = (Math.random() - 0.5) * 60;
+        const y = (Math.random() - 0.5) * 60;
         letter.style.transform = `translate(${x}px, ${y}px)`;
         setTimeout(() => {
             letter.style.transform = '';
