@@ -1,9 +1,47 @@
+@font-face {
+    font-family: 'Shlop';
+    src: url('../fonts/shlop.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Global Cursor Settings */
+:root {
+    --cursor-default: url("../img/cursed_cursor_state-1.svg") 64 20, auto;
+    --cursor-hover: url("../img/cursed_cursor_state-2.svg") 64 20, auto;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c0c0c0;
+    font-family: 'Verdana', Arial, sans-serif;
+    color: blue;
+    text-align: center;
+    cursor: var(--cursor-default);
+}
+
+body.spin-mode {
+    cursor: none;
+}
+
+a:hover,
+button:hover,
+input[type="submit"]:hover {
+    cursor: var(--cursor-hover);
+}
+
+/* Animated cursor icon */
 #spin-cursor {
     width: 64px;
     height: 64px;
     background: url('../img/cursed_cursor_state-2.svg') no-repeat center;
     background-size: 64px 64px;
-    /* force actual dimensions */
     position: fixed;
     pointer-events: none;
     z-index: 1000;
@@ -21,55 +59,17 @@
     }
 }
 
-body.spin-mode {
-    cursor: none;
-}
-
 .scroll-section {
-    /* height: 100vh; */
     background: #4444aa;
-    /* Or any other contrast color */
 }
 
-@font-face {
-    font-family: 'Shlop';
-    src: url('../fonts/shlop.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    /* horizontal center */
-    align-items: center;
-    /* vertical center */
-    background: #c0c0c0;
-    cursor: url("../img/cursed_cursor_state-1.svg") 64 20, auto;
-    font-family: 'Verdana', Arial, sans-serif;
-    color: blue;
-    text-align: center;
-}
-
-a:hover,
-button:hover,
-input[type="submit"]:hover {
-    cursor: url("../img/cursed_cursor_state-2.svg") 64 20, auto;
-}
-
+/* Layout */
 .container {
     width: 800px;
     height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* pushes footer to bottom */
-    /* background: url("src/img/blownupguy.png") top center no-repeat; */
-    /* background-size: cover; */
     border: 3px solid #fff;
     border-bottom-color: #888;
     border-right-color: #888;
@@ -78,7 +78,8 @@ input[type="submit"]:hover {
     box-sizing: border-box;
 }
 
-.content {
+.content,
+.main-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -86,14 +87,11 @@ input[type="submit"]:hover {
 }
 
 .main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
     width: 100%;
 }
 
+/* Typography */
 h1 {
     font-family: 'Shlop', sans-serif;
     font-size: 6em;
@@ -101,7 +99,7 @@ h1 {
     color: red;
     text-shadow: 1px 1px 0 #fff, 2px 2px 0 #888;
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 h1 span {
@@ -114,10 +112,19 @@ h2 {
     text-shadow: 1px 1px 0 #fff;
 }
 
+p,
+li {
+    color: blue;
+}
+
+strong,
+b {
+    color: yellow;
+}
+
+/* Navigation */
 nav {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    /* optional spacing before the next section */
+    margin: 10px 0 20px;
 }
 
 nav a {
@@ -138,11 +145,11 @@ nav a:hover {
     color: green;
 }
 
-
+/* Lists */
 ul {
     list-style: square;
     text-align: left;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 30px;
     width: 60%;
     background: #f0f0f0;
     border: 1px solid #888;
@@ -151,8 +158,9 @@ ul {
     color: green;
 }
 
+/* Footer */
 footer {
-    margin-top: 40px;
+    width: 100%;
     text-align: center;
     color: green;
     font-size: 0.9em;
@@ -161,15 +169,5 @@ footer {
     border-bottom: 2px solid #888;
     padding: 10px 0 0 0;
     box-shadow: 0 1px 0 #888;
-}
-
-p,
-li {
-    color: blue;
-}
-
-/* Optional: make strong or important text yellow */
-strong,
-b {
-    color: yellow;
+    margin-top: 20px;
 }
