@@ -59,7 +59,7 @@ function randomTremble() {
 randomTremble();
 
 // random background image + matching bg color
-const faceImages = ['face0.png', 'face1.png', 'face2.png', 'face3.png'];
+const faceImages = ['face0.png', 'face1.png', 'face2.png', 'face3.png', 'face4.png', 'face5.png', 'face6.png'];
 const randomFace = faceImages[Math.floor(Math.random() * faceImages.length)];
 const imagePath = `src/img/facesOfTheInternet/${randomFace}`;
 const container = document.querySelector('.container');
