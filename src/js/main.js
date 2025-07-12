@@ -13,12 +13,23 @@ latestNews.addEventListener('mouseleave', () => {
 });
 
 document.addEventListener('mousemove', (e) => {
-    spinCursor.style.left = `${e.clientX - 32}px`;
-    spinCursor.style.top = `${e.clientY - 32}px`;
+    const cursorWidth = 128;
+    spinCursor.style.left = `${e.clientX - cursorWidth / 2}px`;
+    spinCursor.style.top = `${e.clientY}px`;
 });
 
 // tremble effect
 const headlineSpans = document.querySelectorAll('h1 span');
+
+headlineSpans.forEach(span => {
+    span.addEventListener('mouseenter', () => {
+        if (!span.dataset.busy) {
+            span.dataset.busy = "true";
+            animateLetterAroundFrame(span);
+            setTimeout(() => { span.dataset.busy = ""; }, 2500); // prevent spam
+        }
+    });
+});
 
 function trembleBurst(letter) {
     let count = 0;
@@ -72,3 +83,83 @@ img.onload = function () {
     const rgb = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
     document.body.style.backgroundColor = rgb;
 };
+
+
+
+function animateLetterAroundFrame(letter) {
+    const containerRect = container.getBoundingClientRect();
+    const letterRect = letter.getBoundingClientRect();
+
+    const flyingLetter = letter.cloneNode(true);
+    const letterStyles = window.getComputedStyle(letter);
+
+    // Apply visual styles
+    Object.assign(flyingLetter.style, {
+        position: 'absolute',
+        left: `${letterRect.left}px`,
+        top: `${letterRect.top}px`,
+        width: `${letterRect.width}px`,
+        height: `${letterRect.height}px`,
+        zIndex: 9999,
+        transition: 'all 0.4s linear',
+        pointerEvents: 'none',
+        fontFamily: letterStyles.fontFamily,
+        fontSize: letterStyles.fontSize,
+        fontWeight: letterStyles.fontWeight,
+        color: letterStyles.color,
+        textShadow: letterStyles.textShadow,
+        letterSpacing: letterStyles.letterSpacing,
+        lineHeight: letterStyles.lineHeight,
+        textAlign: letterStyles.textAlign,
+    });
+
+    document.body.appendChild(flyingLetter);
+    letter.style.visibility = 'hidden';
+
+    const original = {
+        x: letterRect.left,
+        y: letterRect.top
+    };
+
+    const path = [
+        original,
+        { x: containerRect.right - letterRect.width, y: containerRect.top },
+        { x: containerRect.right - letterRect.width, y: containerRect.bottom - letterRect.height },
+        { x: containerRect.left, y: containerRect.bottom - letterRect.height },
+        { x: containerRect.left, y: containerRect.top },
+        original  // return to original position
+    ];
+
+    let i = 0;
+    function moveNext() {
+        if (i >= path.length) {
+            letter.style.visibility = '';
+            document.body.removeChild(flyingLetter);
+            return;
+        }
+
+        flyingLetter.style.left = `${path[i].x}px`;
+        flyingLetter.style.top = `${path[i].y}px`;
+        i++;
+        setTimeout(moveNext, 300);
+    }
+
+    moveNext();
+}
+
+
+document.addEventListener('mousedown', () => {
+    document.documentElement.style.setProperty('--cursor-default', 'url("../img/cursed_cursor_state-1-small.svg") 32 2, auto');
+});
+
+document.addEventListener('mouseup', () => {
+    document.documentElement.style.setProperty('--cursor-default', 'url("../img/cursed_cursor_state-1.svg") 64 5, auto');
+});
+
+document.addEventListener('mousedown', () => {
+    document.documentElement.style.setProperty('--cursor-hover', 'url("../img/cursed_cursor_state-2-small.svg") 32 2, auto');
+});
+
+document.addEventListener('mouseup', () => {
+    document.documentElement.style.setProperty('--cursor-hover', 'url("../img/cursed_cursor_state-2.svg") 64 5, auto');
+});

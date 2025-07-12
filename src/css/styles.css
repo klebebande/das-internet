@@ -8,23 +8,32 @@
 
 /* Global Cursor Settings */
 :root {
-    --cursor-default: url("../img/cursed_cursor_state-1.svg") 64 20, auto;
-    --cursor-hover: url("../img/cursed_cursor_state-2.svg") 64 20, auto;
+    --cursor-default: url("../img/cursed_cursor_state-1.svg") 64 5, auto;
+    --cursor-hover: url("../img/cursed_cursor_state-2.svg") 64 5, auto;
 }
 
 body {
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     background: #c0c0c0;
     font-family: 'Verdana', Arial, sans-serif;
     color: blue;
     text-align: center;
     cursor: var(--cursor-default);
 }
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 body.spin-mode {
     cursor: none;
@@ -38,15 +47,18 @@ input[type="submit"]:hover {
 
 /* Animated cursor icon */
 #spin-cursor {
-    width: 64px;
-    height: 64px;
-    background: url('../img/cursed_cursor_state-2.svg') no-repeat center;
-    background-size: 64px 64px;
+    width: 128px;
+    height: 128px;
     position: fixed;
     pointer-events: none;
     z-index: 1000;
     display: none;
+    background: url('../img/cursed_cursor_state-2.svg') no-repeat center top;
+    /* anchor visual to top center */
+    background-size: contain;
     animation: spin 1s linear infinite;
+    transform-origin: top center;
+    /* anchor transform here */
 }
 
 @keyframes spin {
@@ -59,6 +71,22 @@ input[type="submit"]:hover {
     }
 }
 
+
+body.spin-mode {
+    cursor: none;
+}
+
+#contact-link {
+    color: yellow;
+    text-decoration: underline;
+    pointer-events: auto;
+}
+
+#contact-link:hover {
+    cursor: none;
+    /* Hide native cursor */
+}
+
 .scroll-section {
     background: #4444aa;
 }
@@ -66,7 +94,7 @@ input[type="submit"]:hover {
 /* Layout */
 .container {
     width: 800px;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,6 +112,7 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .main-content {
@@ -104,7 +133,9 @@ h1 {
 
 h1 span {
     display: inline-block;
+    transition: transform 0.1s ease;
 }
+
 
 h2 {
     color: yellow;
