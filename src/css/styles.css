@@ -52,8 +52,9 @@ body {
 .stretched-text {
     font-size: 40px;
     margin-top: 80px;
-    transform: scaleY(2.5); /* verzerrt in die Höhe */
-    transform-origin: bottom top; /* optional: Anker oben */
+    transform: scaleY(2.5);
+    display: inline-block;
+    transform-origin: bottom top;
 }
 
 .page-wrapper {
