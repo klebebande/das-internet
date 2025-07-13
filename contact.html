@@ -5,11 +5,71 @@
     <title>Contact Das Internet</title>
     <link rel="icon" href="src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="src/css/styles.css">
+
+    <style>
+        @media (max-width: 1000px) {
+            body {
+                font-size: 1.1em;
+                padding: 0;
+                margin: 0;
+            }
+
+            .container {
+                width: 100vw !important;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                font-size: 8em !important;
+                word-break: break-word;
+            }
+
+            table {
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            td {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            td label {
+                display: block;
+                font-size: 3em;
+                margin-bottom: 6px;
+            }
+
+            td input,
+            td textarea {
+                width: 100% !important;
+                font-size: 2em;
+                padding: 12px;
+                box-sizing: border-box;
+            }
+
+            td textarea {
+                min-height: 150px;
+            }
+
+            button[type="submit"] {
+                font-size: 3em;
+                padding: 14px 24px;
+                width: 100%;
+            }
+
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 
 <body style="background: #dcdcdc; font-family: 'Comic Sans MS', cursive; color: blue; text-align: center;">
     <div class="page-wrapper">
-        <div class="container" stlye="min-width:100%;">
+        <div class="container" stlye="min-width:100vw;">
             <h1 style="font-size: 4em; color: red; text-shadow: 2px 2px yellow;">
                 Kontaktiere Das Internet
             </h1>
@@ -29,7 +89,7 @@
                     </tr>
                     <tr>
                         <td><label for="message">Message:</label></td>
-                        <td><textarea id="message" name="message" rows="6" cols="38" required
+                        <td><textarea id="message" name="message" rows="10" cols="38" required
                                 style="background: lime; border: dashed 3px red;"></textarea></td>
                     </tr>
                     <tr>
@@ -46,10 +106,12 @@
                 <input type="hidden" name="_next" value="https://klebebande.github.io/das-internet/thank-you.html">
             </form>
 
-            <p style="font-size: 10px; margin-top: 20px; color: gray;">&copy; 2025 Das Internet. All rights reserved.
-            </p>
+
         </div>
+        <p style="font-size: 1em; margin-top: 20px; color: gray;">&copy; 2025 Das Internet. All rights reserved.
+        </p>
     </div>
+    <script src="src/js/main.js" defer></script>
 </body>
 
 </html>
