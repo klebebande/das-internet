@@ -74,10 +74,23 @@
                 font-size: 0.9em;
             }
         }
+
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+        }
     </style>
 </head>
 
 <body style="background: #dcdcdc; font-family: 'Comic Sans MS', cursive; color: blue; text-align: center;">
+    <video muted loop playsinline id="bg-video">
+        <source src="src/figureninsülze.mp4" type="video/mp4">
+    </video>
     <div class="page-wrapper">
         <div class="container" style="min-width:100vw;">
             <h1 style="font-size: 4em; color: red; text-shadow: 2px 2px yellow;">
@@ -122,6 +135,51 @@
         </p>
     </div>
     <script src="src/js/main.js" defer></script>
+    <script>
+        const video = document.getElementById('bg-video');
+        let moving = false;
+        let rafId;
+
+        function playIfMoving() {
+            if (moving) {
+                if (video.paused) {
+                    video.play().catch(err => console.warn('Autoplay failed:', err));
+                }
+            } else {
+                if (!video.paused) {
+                    video.pause();
+                }
+            }
+            rafId = requestAnimationFrame(playIfMoving);
+        }
+
+        // Set moving true on mousemove/touchstart
+        function startMovement() {
+            moving = true;
+        }
+
+        // Set moving false shortly after movement stops
+        function stopMovement() {
+            moving = false;
+        }
+
+        // Mouse movement
+        document.addEventListener('mousemove', () => {
+            startMovement();
+            clearTimeout(window._pauseTimeout);
+            window._pauseTimeout = setTimeout(stopMovement, 100); // short pause threshold
+        });
+
+        // Touch movement (for mobile)
+        document.addEventListener('touchmove', () => {
+            startMovement();
+            clearTimeout(window._pauseTimeout);
+            window._pauseTimeout = setTimeout(stopMovement, 100);
+        });
+
+        // Start the animation loop
+        playIfMoving();
+    </script>
 </body>
 
 </html>
