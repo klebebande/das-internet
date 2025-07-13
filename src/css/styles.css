@@ -31,7 +31,7 @@
 }
 
 html, body {
-  height: 100vh;
+  height: calc(var(--vh) * 100);
   overflow: hidden;
 }
 
@@ -55,10 +55,12 @@ body {
     transform: scaleY(2.5);
     display: inline-block;
     transform-origin: bottom top;
+    background: transparent;
+    position: relative;
 }
 
 .page-wrapper {
-    min-height: 100vh;
+    min-height: calc(var(--vh) * 100);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,7 +127,7 @@ body.spin-mode {
 /* Layout */
 .container {
     width: 800px;
-    height: 90vh;
+    height: calc(var(--vh) * 90);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -139,6 +141,7 @@ body.spin-mode {
 
 .content,
 .main-content {
+    flex: 1;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -186,16 +189,16 @@ b {
 
 /* Navigation */
 nav {
-    margin: 10px 0 20px;
+    margin: 30px 0 20px;
 }
 
 nav a {
     color: blue;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 20px;
     font-weight: bold;
-    font-size: 1.1em;
-    padding: 2px 8px;
+    font-size: 1.3em;
+    padding: 5px 24px;
     border: 2px outset #fff;
     background: #d4d0c8;
     box-shadow: 1px 1px 0 #888;

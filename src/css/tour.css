@@ -83,3 +83,38 @@
 .tour-list li:nth-child(5) {
     width: 100%;
 }
+
+
+@media (max-width: 768px) {
+  .spray-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 10px;
+    min-height: auto;
+  }
+
+  .spray-bottle {
+    height: 220px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+
+  .triangle-frame {
+    position: static;
+    transform: none;
+    clip-path: none;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    align-items: flex-start;
+  }
+
+  .tour-list {
+    align-items: flex-start;
+  }
+
+  .tour-list li {
+    text-align: left;
+  }
+}
