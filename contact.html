@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Das Internet</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="background: #dcdcdc; font-family: 'Comic Sans MS', cursive; color: blue; text-align: center;">
+    <div class="page-wrapper">
+        <div class="container">
+            <h1 style="font-size: 4em; color: red; text-shadow: 2px 2px yellow;">
+                Contact
+            </h1>
+
+            <form action="https://formsubmit.co/klebebande161@gmail.com" method="POST">
+                <table border="5" cellpadding="10" cellspacing="4" bgcolor="#ffffcc"
+                    style="margin: 30px auto; box-shadow: 5px 5px 0 #888;">
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" id="name" name="name" required
+                                style="background: yellow; border: 3px inset blue;" size="40"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" name="email" required
+                                style="background: cyan; border: 3px outset purple;" size="40"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="message">Message:</label></td>
+                        <td><textarea id="message" name="message" rows="6" cols="38" required
+                                style="background: lime; border: dashed 3px red;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <button type="submit"
+                                style="background: magenta; color: white; font-weight: bold; padding: 10px 20px; border: double 5px black;">
+                                Send Message
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="thank-you.html">
+            </form>
+
+            <p style="font-size: 10px; margin-top: 20px; color: gray;">&copy; 2025 Das Internet. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
